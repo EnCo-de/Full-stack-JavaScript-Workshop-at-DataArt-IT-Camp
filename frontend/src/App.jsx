@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
+import Joke from "./components/Joke"
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const [loading, setLoading] = useState(true);
+    const joke = {
+        "id": "unique_joke_id",
+        "question": "Why did the developer go broke?",
+        "answer": "Because he used up all his cache!",
+        
+        "votes": [
+            { "value": 10, "label": "😂" },
+            { "value": 5, "label": "👍" },
+            { "value": 3, "label": "❤️" },
+            { "value": 5, "label": "⭐" },
+        ],
+        
+        "availableVotes": ["😂", "👍", "❤️", "⭐"],
+    }
+      
+  return <>
+      <h1>Jokes Voting</h1>
+      <Joke loading={loading} />
+      <footer>
+        <p className="read-the-docs">DataArt Winter IT Camp 2025 JavaScript Workshop</p>
+        <p className="read-the-docs">Modern JS App Development: React, Node.js</p>
+        <a href="https://github.com/EnCo-de/Full-stack-JavaScript-Workshop-at-DataArt-IT-Camp" target="_blank">GitHub code</a>
+      </footer>
+  </>
 }
 
 export default App
