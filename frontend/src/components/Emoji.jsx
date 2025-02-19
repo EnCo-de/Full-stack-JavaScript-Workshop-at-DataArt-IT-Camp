@@ -7,10 +7,6 @@ export default function Emoji(vote) {
       console.log({...formData})
       setValue(prevCount => ++prevCount)
       setVoted(true)
-      const button = event.currentTarget
-        button.style.color = "#f9f9f9"
-        button.style.backgroundColor = "#646cff"
-        button.style.fontWeight = "bold"  
   }
 
   return <form action={upvote} method="post">
