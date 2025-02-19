@@ -31,11 +31,11 @@ app.get("/api/joke", async (req, res) => {
 })
 
 app.post("/api/joke/:id", async (req, res) => {
-  if(!request.body) return res.sendStatus(400);
+  if (!(req.body && label in req.body)) return res.sendStatus(400);
   const jokeID = req.params.id
   console.log(`joke id = ${req.params.id}`);
-  const label = req.body
-  console.log("body = ", label);
+  const label = req.body.label
+  console.log("body = ", req.body);
   res.sendStatus(204)
 })
 
