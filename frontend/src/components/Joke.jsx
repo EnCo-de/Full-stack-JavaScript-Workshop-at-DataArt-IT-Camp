@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL, JOKE_ENDPOINT } from '../constants/apiEndpoints';
+import Emoji from "./Emoji"
 
 export default function Joke(props) {
   const [joke, setJoke] = useState()
@@ -15,7 +16,6 @@ export default function Joke(props) {
       } catch (error) {
         setError(error)
         console.error("Error fetching data:", error);
-        // throw error;
       } finally {
         props.setLoading(false)
       }
@@ -26,10 +26,13 @@ export default function Joke(props) {
   // If you specify the dependencies, this Effect runs after the initial render and after re-renders with changed dependencies.
   // The empty array means  effect runs once, when the component mounts.
 
-  if (error) return <p className="read-the-docs">Error: {error.message}</p>;
-
+  if (error) return <p className="read-the-docs">Error: {error.message}</p>
+  const emojis = joke?.votes?.map(
+    vote => <Emoji key={vote.label} emoji={vote.label} count={vote.value} />
+  )
   return <>
     {joke ? <main>
+        <div className="votes card">{emojis}</div>
         <h2 id="question">{joke?.question}</h2>
         <h2 id="answer">{joke?.answer}</h2>
       </main> : props.loading && <h2 id="loading">Loading a joke ...</h2>
