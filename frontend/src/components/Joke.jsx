@@ -28,7 +28,7 @@ export default function Joke(props) {
 
   if (error) return <p className="read-the-docs">Error: {error.message}</p>
   const emojis = joke?.votes?.map(
-    vote => <Emoji key={vote.label} emoji={vote.label} count={vote.value} />
+    vote => <Emoji key={vote.label} emoji={vote.label} count={vote.value} jokeId={joke.id} />
   )
   return <>
     {joke ? <main>
