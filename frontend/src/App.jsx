@@ -7,7 +7,7 @@ function App() {
   const nextJoke = () => if (loading) setLoading(false)
   return <>
       <h1>Jokes Voting</h1>
-      <Joke loading={loading} />
+      <Joke loading={loading} setLoading={setLoading} />
       <button onClick={nextJoke} disabled={loading} id="next">Next Joke</button>
       <footer>
         <p className="read-the-docs">DataArt Winter IT Camp 2025 JavaScript Workshop</p>

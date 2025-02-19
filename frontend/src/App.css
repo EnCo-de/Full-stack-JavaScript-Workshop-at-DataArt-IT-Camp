@@ -33,7 +33,13 @@
   }
 }
 
+.card:disabled {
+  color: "#f9f9f9";
+  background-color: "#646cff";
+  font-weight: "bold" ; 
+}
 .card {
+  font-size: larger;
   padding: 2em;
 }
 

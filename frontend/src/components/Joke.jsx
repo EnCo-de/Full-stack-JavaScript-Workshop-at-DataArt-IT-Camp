@@ -32,7 +32,7 @@ export default function Joke(props) {
   )
   return <>
     {joke ? <main>
-        <div className="votes card">{emojis}</div>
+        <div className="votes">{emojis}</div>
         <h2 id="question">{joke?.question}</h2>
         <h2 id="answer">{joke?.answer}</h2>
       </main> : props.loading && <h2 id="loading">Loading a joke ...</h2>
