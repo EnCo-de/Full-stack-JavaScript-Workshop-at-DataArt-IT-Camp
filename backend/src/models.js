@@ -15,6 +15,8 @@ const voteSchema = new Schema({
   label: {
     type: String,
     required: true,
+    unique: true, // Specifying `index: true` is optional if you specify Unique index.
+    minLength: 1, // Checks if the value length is not less than the given number
     maxLength: 4, // Creates a validator that checks if the emoji length value is not greater than the given number
     enum: availableVotes,  // Creates a validator that checks if the value is in the given array.
   }
@@ -36,7 +38,6 @@ const jokeSchema = new Schema({
   answer: {
     type: String,
     required: true,
-    minlength: 5,  // Adding some basic validation on length
   },
   votes: {
     type: [voteSchema],  // Array of votes
@@ -61,7 +62,8 @@ const jokeSchema = new Schema({
   }
 });
 
-// Create the Mongoose model
+// Create the Mongoose model from schema
 const Joke = mongoose.model('Joke', jokeSchema);
 
-export default Joke
+export default Joke;
+export availableVotes;
