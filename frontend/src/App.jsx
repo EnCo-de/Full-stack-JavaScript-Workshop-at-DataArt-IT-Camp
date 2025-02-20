@@ -14,6 +14,7 @@ function App() {
       const response = await fetch(url)
       const json = await response.json()
       setJoke(json)
+      setError(null)
       console.log(json)
     } catch (error) {
       setError(error)
@@ -31,6 +32,7 @@ function App() {
 
   const nextJoke = () => {
     setLoading(true)
+    setError(null)
     console.log("clicked to fetch next Joke")
     fetchJoke()
   }
@@ -38,7 +40,9 @@ function App() {
   return <>
       <h1>Jokes Voting</h1>
       <Joke joke={joke} error={error} />
-      <button onClick={nextJoke} disabled={loading} id="next">Next Joke</button>
+      <button onClick={nextJoke} disabled={loading} id="next" className="next">
+        {loading ? "Loading" : "Next Joke"}
+      </button>
       <footer>
         <p className="read-the-docs">DataArt Winter IT Camp 2025 JavaScript Workshop</p>
         <p className="read-the-docs">Modern JS App Development: React, Node.js</p>
