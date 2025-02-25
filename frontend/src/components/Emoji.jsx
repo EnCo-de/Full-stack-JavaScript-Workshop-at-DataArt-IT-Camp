@@ -3,12 +3,17 @@ import { API_BASE_URL, JOKE_ENDPOINT } from '../constants/apiEndpoints';
 
 export default function Emoji(vote) {
   const [value, setValue] = useState(vote.count)
-  const [voted, setVoted] = useState(false)
+  const isSelected = (vote.jokeId in vote.ballot) && vote.ballot[vote.jokeId].has(vote.emoji)
+  const [voted, setVoted] = useState(isSelected)
   const upvote = async function () {
+    if (isSelected || voted) return;
     setVoted(true)
+    // setValue(prevCount => ++prevCount)
     try {
       const url = `${API_BASE_URL}${JOKE_ENDPOINT}/${vote.jokeId}`
-      const body = JSON.stringify({ label: vote.emoji })
+      const body = JSON.stringify({ label: vote.emoji, voteID: vote.voteID.toString() })
+      console.log(body)
+
       const response = await fetch(url, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -25,18 +30,25 @@ export default function Emoji(vote) {
       const data = await response.json()
       console.log(data)
       setValue(data.value)
-      // setValue(prevCount => ++prevCount)
       console.log(vote.emoji, 'Vote submitted successfully.')
+      vote.setBallot(prevBallot => {
+        if (vote.jokeId in prevBallot) {
+          prevBallot[vote.jokeId].add(vote.emoji)
+        } else {
+          prevBallot[vote.jokeId] = new Set([vote.emoji])         
+        }
+        return prevBallot
+      })
     } catch (error) {
       // error handling logic here, such as displaying an error message
-      setVoted(false)  
+      setVoted(isSelected)  
       console.error('Error submitting form data:', error)
     }
   }
 
   useEffect(() => {
     console.log("fresh emoji effect", vote.emoji)
-    if (voted) setVoted(false)
+    if (voted) setVoted(isSelected)
     if (vote.count != value) setValue(vote.count)
   }, [vote.jokeId]);  // If you specify the dependencies, this Effect runs after the initial render and after re-renders with changed dependencies.
 

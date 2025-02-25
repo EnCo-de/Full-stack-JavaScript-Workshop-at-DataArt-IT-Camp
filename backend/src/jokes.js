@@ -19,7 +19,12 @@ export default [{
 	"answer": "The Web.",
 },
 {
-	"id": "sink",
-	"question": "What do you call 10 000 lawyers at the bottom of the sea?",
-	"answer": "A boating accident.",
+	"id": "classic-array",
+	"question": "Why did the JavaScript array go out of bounds?",
+	"answer": "Because it didn't know its own length.",
+},
+{
+	"id": "two-equality",
+	"question": "What is the difference between == and === comparison operators?",
+	"answer": "JavaScript: Well, with == I kind of guess, but with === I'm really sure.",
 }]
