@@ -15,7 +15,7 @@ const voteSchema = new Schema({
   label: {
     type: String,
     required: true,
-    unique: true, // Specifying `index: true` is optional if you specify Unique index.
+    // unique: true, // Specifying `index: true` is optional if you specify Unique index.
     minLength: 1, // Checks if the value length is not less than the given number
     maxLength: 4, // Creates a validator that checks if the emoji length value is not greater than the given number
     enum: availableVotes,  // Creates a validator that checks if the value is in the given array.
@@ -66,4 +66,4 @@ const jokeSchema = new Schema({
 const Joke = mongoose.model('Joke', jokeSchema);
 
 export default Joke;
-export availableVotes;
+export { availableVotes };
