@@ -19,6 +19,26 @@ export default [{
 	"answer": "The Web.",
 },
 {
+	"id": "cache-rest",
+	"question": "What did the website do when it felt sluggish?",
+	"answer": "It cached up on some REST.",
+},
+{
+	"id": "await-coffee",
+	"question": "What’s a JavaScript developer's favorite type of coffee?",
+	"answer": "Async! ☕️",
+},
+{
+	"id": "symbol-spins",
+	"question": "Why is the loading symbol so good at keeping secrets?",
+	"answer": "Because it always spins the truth!",
+},
+{
+	"id": "carry-on",
+	"question": "Why did the webpage break up with the loading bar?",
+	"answer": "Because they couldn’t move forward, they were always stuck in the middle!",
+},
+{
 	"id": "classic-array",
 	"question": "Why did the JavaScript array go out of bounds?",
 	"answer": "Because it didn't know its own length.",
