@@ -21,9 +21,9 @@ services:
       db:
         condition: service_healthy
   db:
-    image: mongo:latest
+    image: bitnami/mongodb:latest
     volumes:
-      - votes_db:/data/db
+      - votes_db:/bitnami/mongodb
     ports:
       - "27017:27017"  
     networks:
