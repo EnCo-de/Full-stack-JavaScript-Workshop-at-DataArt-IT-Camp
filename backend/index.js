@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import db from './connection.js'
-import Joke from './models.js'
+import db from './src/connection.js'
+import Joke from './src/models.js'
 
 const app = express()
 const port = 3000 // http://localhost:3000/
