@@ -13,6 +13,8 @@ function App() {
   const fetchJoke = async () => {
     try {
       const url = `${API_BASE_URL}${JOKE_ENDPOINT}`
+      console.log(url)
+      //   const response = await axios.get(apiUrl/{RESOURCE_PATH});
       const response = await fetch(url)
       const json = await response.json()
       setJoke(json)
