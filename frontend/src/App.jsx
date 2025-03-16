@@ -14,7 +14,17 @@ function App() {
     try {
       const url = `${API_BASE_URL}${JOKE_ENDPOINT}`
       console.log(url)
-      //   const response = await axios.get(apiUrl/{RESOURCE_PATH});
+        // serviceurl = os:getEnv("CHOREO_NETWORKJS_SERVICEURL");
+        // string choreoapikey = os:getEnv("CHOREO_NETWORKJS_CHOREOAPIKEY");
+        //   const response = await axios.get(apiUrl/{RESOURCE_PATH});
+        //   const response = await axios.get(serviceURL/{RESOURCE_PATH}, {
+        //     headers: {
+        //       'Choreo-API-Key': `${choreoApiKey}`
+        //     }
+        //   });
+        
+      
+      
       const response = await fetch(url)
       const json = await response.json()
       setJoke(json)

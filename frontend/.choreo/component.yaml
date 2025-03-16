@@ -1,0 +1,9 @@
+schemaVersion: "1.1"
+
+dependencies:
+    connectionReferences:
+    - name: networkjs
+      resourceRef: service:/jsworkshop/jokeexpressjs/v1/197f7/PUBLIC
+
+# CHOREO_NETWORKJS_SERVICEURL
+# CHOREO_NETWORKJS_CHOREOAPIKEY
