@@ -38,11 +38,17 @@
   background-color: #646cff;
   font-weight: bold ; 
 }
+
 .card {
-  font-size: larger;
-  padding: 2em;
+  font-size: 1.2em;
+  padding: min(10%, 1em);
+  margin: 10px;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.state {
+  margin-top: max(15vw, 20vh);
 }

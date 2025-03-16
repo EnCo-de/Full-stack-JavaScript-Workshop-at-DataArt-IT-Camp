@@ -6,18 +6,36 @@ services:
       - "8080:8080"    
     depends_on:
       - db
-  nodebackend: 
+      - node
+  node: 
     build:
       context: ./backend
     ports: 
       - "3000:3000"    #external:internal 
+    networks:
+      - back-tier
+    environment:
+      NODE_ENV: development
+      MONGODB_URI: mongodb://db:27017/collections
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   db:
+    image: mongo:latest
     volumes:
       - votes_db:/data/db
-    image: mongo:latest
     ports:
       - "27017:27017"  
+    networks:
+      - back-tier
+    healthcheck:
+      test: echo "db.runCommand({hello:1})" | mongosh
+      interval: 20s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
 volumes:
   votes_db:
+networks:
+  back-tier:
